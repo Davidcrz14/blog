@@ -92,7 +92,7 @@ const Technology = () => {
     useEffect(() => {
         const fetchNews = async () => {
             try {
-                const response = await fetch('https://g.news.io/api/v4/search?' + new URLSearchParams({
+                const response = await fetch('https://gnews.io/api/v4/search?' + new URLSearchParams({
                     q: 'Inteligencia Artificial',
                     lang: 'es',
                     country: 'mx',
