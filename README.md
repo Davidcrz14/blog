@@ -11,17 +11,12 @@
 
 _Un viaje nostálgico por el mundo digital a través de un blog personal con diseño retro_ 🚀
 
-[Ver Demo](https://bliss-blog.vercel.app) · [Reportar Bug](https://github.com/Davidcrz14/blog/issues) · [Solicitar Feature](https://github.com/Davidcrz14/blog/issues)
+[Ver Demo](https://davcblog.vercel.app/) 
 
 </div>
 
-## 🌈 Vista Previa
 
-<div align="center">
-<img src="/path/to/preview.gif" alt="Bliss Blog Preview" width="600px"/>
 
-_Una experiencia única donde lo retro se encuentra con lo moderno_
-</div>
 
 ## ⭐ Características Principales
 
@@ -104,14 +99,13 @@ _Una experiencia única donde lo retro se encuentra con lo moderno_
 ```tree
 src/
 ├── components/            # Componentes modulares
-│   ├── UI/               # Elementos de interfaz
-│   ├── Layout/           # Componentes estructurales
-│   └── Features/         # Características principales
+│  
+│   
+│  
 ├── pages/                # Páginas de la aplicación
 ├── assets/               # Recursos estáticos
-│   ├── images/          # Imágenes y SVGs
-│   └── fonts/           # Tipografías
-└── styles/              # Estilos globales
+│  
+
 ```
 
 ## 🎨 Detalles de Diseño
@@ -127,23 +121,8 @@ src/
 
 </div>
 
-## 🤝 Contribución
 
-Las contribuciones son lo que hacen que la comunidad de código abierto sea un lugar increíble para aprender, inspirar y crear. Cualquier contribución que hagas será **muy apreciada**.
 
-1. Haz Fork del proyecto
-2. Crea tu Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la Branch (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
-## 📄 Licencia
-
-Distribuido bajo la Licencia MIT. Ver `LICENSE` para más información.
-
-## 💌 Contacto
-
-David Cruz - [@davidcrz14](https://twitter.com/davidcrz14) - david@blissblog.com
 
 Link del Proyecto: [https://github.com/Davidcrz14/blog](https://github.com/Davidcrz14/blog)
 
