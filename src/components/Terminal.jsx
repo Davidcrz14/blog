@@ -12,7 +12,6 @@ const Terminal = ({ isOpen, onClose }) => {
     const contentRef = useRef(null);
     const chatHistoryRef = useRef([]);
     const terminalRef = useRef(null);
-    const audioRef = useRef(new Audio('/melodia.mp3'));
 
     const genAI = new GoogleGenerativeAI('AIzaSyCrvjrOWFWQF7dqey9udoqFgd9CTTnNXZ4');
 

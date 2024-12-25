@@ -5,49 +5,77 @@ const MusicPlayer = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [volume, setVolume] = useState(0.5);
     const [isLoop, setIsLoop] = useState(false);
+    const [error, setError] = useState(false);
+
+    // Usar el archivo de audio local
     const audioRef = useRef(new Audio('/src/music/melodia.mp3'));
 
-    // Efecto para manejar el evento 'ended'
     useEffect(() => {
         const audio = audioRef.current;
+
+        // Intenta precargar el audio
+        const preloadAudio = async () => {
+            try {
+                audio.crossOrigin = "anonymous"; // Permitir CORS
+                await audio.load();
+                setError(false);
+            } catch (err) {
+                console.error('Error al precargar el audio:', err);
+                setError(true);
+            }
+        };
+
+        const handleError = (e) => {
+            console.error('Error al cargar el audio:', e);
+            setError(true);
+            setIsPlaying(false);
+        };
+
         const handleEnded = () => {
             if (!isLoop) {
                 setIsPlaying(false);
             }
         };
 
+        preloadAudio();
+        audio.addEventListener('error', handleError);
         audio.addEventListener('ended', handleEnded);
-        return () => {
-            audio.removeEventListener('ended', handleEnded);
-        };
-    }, [isLoop]);
 
-    // Efecto para limpiar el audio al desmontar
-    useEffect(() => {
         return () => {
-            const audio = audioRef.current;
+            audio.removeEventListener('error', handleError);
+            audio.removeEventListener('ended', handleEnded);
             audio.pause();
             audio.currentTime = 0;
         };
-    }, []);
+    }, [isLoop]);
 
-    // Efecto para manejar el volumen
     useEffect(() => {
         audioRef.current.volume = volume;
     }, [volume]);
 
-    // Efecto para manejar el loop
     useEffect(() => {
         audioRef.current.loop = isLoop;
     }, [isLoop]);
 
-    const togglePlay = () => {
-        if (isPlaying) {
-            audioRef.current.pause();
-        } else {
-            audioRef.current.play();
+    const togglePlay = async () => {
+        try {
+            const audio = audioRef.current;
+            if (isPlaying) {
+                await audio.pause();
+            } else {
+                setError(false);
+                // Reintentar cargar el audio si falló anteriormente
+                if (audio.error) {
+                    audio.load();
+                }
+                await audio.play();
+            }
+            setIsPlaying(!isPlaying);
+        } catch (err) {
+            console.error('Error al reproducir:', err);
+            setError(true);
+            setIsPlaying(false);
         }
-        setIsPlaying(!isPlaying);
     };
 
     const handleVolumeChange = (direction) => {
@@ -63,10 +91,29 @@ const MusicPlayer = () => {
         setIsLoop(!isLoop);
     };
 
+    if (error) {
+        return (
+            <div className="fixed bottom-4 right-4 z-50">
+                <div className="retro-card p-4 bg-[#f5e6d3] shadow-xl">
+                    <p className="text-sm text-red-600">Error al cargar la música</p>
+                    <button
+                        onClick={() => {
+                            setError(false);
+                            audioRef.current.load();
+                        }}
+                        className="retro-button mt-2 text-sm"
+                    >
+                        Reintentar
+                    </button>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="fixed bottom-4 right-4 z-50">
             <div className="retro-card p-4 bg-[#f5e6d3] shadow-xl flex flex-col items-center space-y-2">
-                <h2>Music</h2>
+                <h2 className="text-sm font-bold mb-2">Música Ambiental</h2>
                 <div className="flex space-x-2">
                     <button
                         onClick={togglePlay}
