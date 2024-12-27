@@ -132,6 +132,9 @@ const MainLayout = ({ children }) => {
                                     <Link to="/proyectos" className="retro-footer-link">
                                         <span className="font-mono">&gt;</span> Proyectos Web
                                     </Link>
+                                    <Link to="/arcade" className="retro-footer-link">
+                                        <span className="font-mono">&gt;</span> Arcade
+                                    </Link>
                                 </div>
                             </div>
                         </div>
