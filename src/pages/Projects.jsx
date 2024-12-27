@@ -108,9 +108,15 @@ const Projects = () => {
     };
 
     return (
-        <div className="container mx-auto px-4 py-8">
-            <h1 className="text-4xl font-bold mb-12 text-center">Mis Proyectos</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="space-y-12">
+            <section className="text-center animate-slide-in">
+                <h1 className="text-6xl font-bold mb-4">Proyectos</h1>
+                <p className="text-xl max-w-2xl mx-auto">
+                    Explora mi colección de proyectos personales y experimentos creativos.
+                </p>
+            </section>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {projects.map((project) => (
                     <motion.div
                         key={project.id}

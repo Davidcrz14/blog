@@ -62,6 +62,7 @@ const MainLayout = ({ children }) => {
                                 <NavLink to="/tecnologia">Tecnología</NavLink>
                                 <NavLink to="/historias">Historias</NavLink>
                                 <NavLink to="/proyectos">Proyectos Web</NavLink>
+                                <NavLink to="/arcade">Arcade</NavLink>
                             </div>
                         </div>
                         <div className="flex items-center space-x-4">
@@ -93,6 +94,9 @@ const MainLayout = ({ children }) => {
                         <Link to="/proyectos" className="block py-2 hover:text-[#8b4513] transition-colors">
                             Proyectos Web
                         </Link>
+                        <Link to="/arcade" className="block py-2 hover:text-[#8b4513] transition-colors">
+                            Arcade
+                        </Link>
                         <button
                             className="retro-button-nav w-full text-left mt-2"
                             onClick={() => {
@@ -115,7 +119,7 @@ const MainLayout = ({ children }) => {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                         <div className="space-y-4 md:space-y-6">
                             <div className="retro-footer-card">
-                                <h3 className="font-bold text-lg md:text-xl mb-4 flex items-center retro-title">
+                                <h3 className="font-bold text-lg md:text-xl mb-4 flex items-center ">
                                     <span className="mr-2">⌘</span> Navegación Rápida
                                 </h3>
                                 <div className="space-y-2 md:space-y-3">
@@ -133,7 +137,7 @@ const MainLayout = ({ children }) => {
                         </div>
                         <div className="space-y-4 md:space-y-6">
                             <div className="retro-footer-card">
-                                <h3 className="font-bold text-lg md:text-xl mb-4 flex items-center retro-title">
+                                <h3 className="font-bold text-lg md:text-xl mb-4 flex items-center ">
                                     <span className="mr-2">⌥</span> Redes
                                 </h3>
                                 <div className="space-y-2 md:space-y-3">
