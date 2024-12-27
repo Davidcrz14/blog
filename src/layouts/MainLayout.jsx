@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Terminal from '../components/Terminal';
 
@@ -21,10 +21,37 @@ const NavLink = ({ to, children }) => {
 const MainLayout = ({ children }) => {
     const [isTerminalOpen, setIsTerminalOpen] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const menuRef = useRef(null);
+    const location = useLocation();
+
+    useEffect(() => {
+        // Cerrar el menú cuando cambia la ruta
+        setIsMenuOpen(false);
+    }, [location]);
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setIsMenuOpen(false);
+            }
+        };
+
+        // Agregar el evento cuando el menú está abierto
+        if (isMenuOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+            document.addEventListener('scroll', () => setIsMenuOpen(false));
+        }
+
+        // Limpiar los eventos cuando el componente se desmonta o el menú se cierra
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('scroll', () => setIsMenuOpen(false));
+        };
+    }, [isMenuOpen]);
 
     return (
         <div className="min-h-screen bg-[#f5e6d3] text-[#2c1810] font-['VT323']">
-            <nav className="border-b-2 border-[#2c1810] bg-[#f5e6d3] sticky top-0 z-50 shadow-sm">
+            <nav className="border-b-2 border-[#2c1810] bg-[#f5e6d3] sticky top-0 z-50 shadow-sm" ref={menuRef}>
                 <div className="max-w-6xl mx-auto px-4">
                     <div className="flex items-center justify-between h-16">
                         <div className="flex items-center space-x-4 md:space-x-12">
