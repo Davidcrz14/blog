@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 const ProjectCard = ({ title, description, link, tags, activePreview, setActivePreview }) => {
     const isPreviewActive = activePreview === link;
@@ -69,46 +70,101 @@ const Projects = () => {
 
     const projects = [
         {
+            id: 1,
             title: "Portafolio Web Funny",
-            description: "Una versión divertida y creativa de mi portafolio personal, mostrando mis proyectos de una manera única y entretenida.",
-            link: "https://davcportafolio.vercel.app/",
-            tags: ["React", "Vercel", "Diseño Creativo"]
+            description: "Un portafolio interactivo con elementos divertidos y animaciones",
+            url: "https://davcportafolio.vercel.app/",
+            tags: ["React", "TailwindCSS", "Animaciones"]
         },
         {
+            id: 2,
             title: "Portafolio Web Profesional",
-            description: "Mi portafolio profesional donde muestro mis habilidades, experiencia y proyectos de una manera formal y elegante.",
-            link: "https://portafoliodavc.vercel.app/",
-            tags: ["React", "Vercel", "Portfolio"]
+            description: "Versión profesional de mi portafolio con diseño minimalista",
+            url: "https://portafoliodavc.vercel.app/",
+            tags: ["Next.js", "TailwindCSS", "Responsive"]
         },
         {
+            id: 3,
             title: "DavCode - Plataforma de Cursos",
-            description: "Una plataforma educativa donde comparto cursos y recursos para aprender desarrollo web y programación.",
-            link: "https://davcode.vercel.app/",
-            tags: ["Educación", "Cursos", "Desarrollo"]
+            description: "Plataforma educativa para aprender programación",
+            url: "https://davcode.vercel.app/",
+            tags: ["React", "Node.js", "MongoDB"]
         },
         {
+            id: 4,
             title: "DavGenerator - Generador de Imágenes",
-            description: "Una herramienta para generar imágenes de código, perfecta para crear capturas de código estilizadas.",
-            link: "https://davgenerator.vercel.app/",
-            tags: ["Generador", "Imágenes", "Código"]
+            description: "Herramienta para generar imágenes con IA",
+            url: "https://davgenerator.vercel.app/",
+            tags: ["OpenAI", "React", "API"]
         }
     ];
 
+    const handlePreview = (id) => {
+        if (activePreview === id) {
+            setActivePreview(null);
+        } else {
+            setActivePreview(id);
+        }
+    };
+
     return (
         <div className="container mx-auto px-4 py-8">
-            <header className="mb-12 text-center">
-                <h1 className="text-4xl font-bold mb-4">Mis Proyectos</h1>
-                <p className="text-xl text-gray-700">Una colección de mis trabajos y experimentos en la web</p>
-            </header>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {projects.map((project, index) => (
-                    <ProjectCard 
-                        key={index} 
-                        {...project} 
-                        activePreview={activePreview}
-                        setActivePreview={setActivePreview}
-                    />
+            <h1 className="text-4xl font-bold mb-12 text-center">Mis Proyectos</h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {projects.map((project) => (
+                    <motion.div
+                        key={project.id}
+                        className="retro-tv-container"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                    >
+                        <div className="retro-tv">
+                            <div className="tv-antenna left"></div>
+                            <div className="tv-antenna right"></div>
+                            <div className="tv-body">
+                                <div className="tv-screen">
+                                    {activePreview === project.id ? (
+                                        <div className="tv-content">
+                                            <iframe
+                                                src={project.url}
+                                                className="w-full h-full"
+                                                title={project.title}
+                                            />
+                                        </div>
+                                    ) : (
+                                        <div className="tv-static">
+                                            <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                                            <p className="text-sm mb-4">{project.description}</p>
+                                            <div className="flex flex-wrap gap-2 mb-4 justify-center">
+                                                {project.tags.map((tag, index) => (
+                                                    <span
+                                                        key={index}
+                                                        className="retro-button-small"
+                                                    >
+                                                        {tag}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                                <div className="tv-controls">
+                                    <button
+                                        onClick={() => handlePreview(project.id)}
+                                        className="tv-button power"
+                                    >
+                                        {activePreview === project.id ? 'Apagar' : 'Encender'}
+                                    </button>
+                                    <div className="tv-knobs">
+                                        <div className="knob"></div>
+                                        <div className="knob"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="tv-stand"></div>
+                        </div>
+                    </motion.div>
                 ))}
             </div>
         </div>
