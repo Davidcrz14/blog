@@ -76,6 +76,13 @@ const Stories = () => {
             category: "Terror",
             readTime: 10,
             slug: "la-ultima-llamada"
+        },
+        {
+            title: "El Eco de la Habitación Vacía",
+            excerpt: "Todo comenzó con un simple cambio de domicilio. Después de mi divorcio, necesitaba alejarme de los recuerdos que me perseguían en cada esquina del departamento que había compartido con Martín durante ocho años...",
+            category: "Terror",
+            readTime: 15,
+            slug: "el-eco-de-la-habitacion-vacia"
         }
     ];
 

@@ -124,6 +124,54 @@ El agua comienza a filtrarse por debajo de mi puerta, y huele a río, a secretos
 podridos y a culpa. Y lo peor es que sé que esta vez, Lucía no se detendrá hasta que la
 verdad salga a la superficie, como el cuerpo que nunca encontraron en aquel caluroso
 verano de nuestra infancia.`
+    },
+    "el-eco-de-la-habitacion-vacia": {
+        title: "El Eco de la Habitación Vacía",
+        category: "Terror",
+        readTime: 15,
+        date: "20 de Octubre, 2024",
+        content: `
+Este es mi fin.
+
+Todo comenzó con un simple cambio de domicilio. Después de mi divorcio, necesitaba alejarme de los recuerdos que me perseguían en cada esquina del departamento que había compartido con Martín durante ocho años. Encontré lo que parecía ser la solución perfecta: un pequeño pero acogedor apartamento en un edificio antiguo del centro.
+
+La primera semana fue tranquila. El lugar tenía ese encanto especial de las construcciones antiguas: techos altos, pisos de madera que crujían suavemente, y una extraña quietud que al principio encontré reconfortante. Pero pronto descubrí que no estaba sola.
+
+Fue algo sutil al principio. Pequeños detalles que atribuí a mi imaginación sobrecargada por el estrés del divorcio. El sonido de pasos en el piso de arriba cuando sabía que el departamento estaba vacío. El reflejo de una figura en el espejo que desaparecía cuando me giraba. La sensación de ser observada mientras dormía.
+
+Lo que realmente me hizo dudar de mi cordura fue el eco. Al principio pensé que era normal; después de todo, el edificio era viejo y probablemente tenía problemas de aislamiento acústico. Pero pronto noté algo peculiar: el eco siempre respondía medio segundo más tarde de lo que debería, como si alguien repitiera mis palabras deliberadamente.
+
+Una noche, incapaz de dormir, decidí investigar. El eco parecía provenir del departamento contiguo, uno que según la administración llevaba meses vacío. Pegué mi oreja a la pared y escuché. Para mi horror, pude distinguir claramente una voz que repetía mis propias palabras, pero... diferente. Era mi voz, pero más grave, más áspera, como si estuviera siendo forzada a través de una garganta seca y dolorida.
+
+La verdadera pesadilla comenzó cuando conocí a Sebas, mi vecino del otro lado. Un hombre amable de unos cincuenta años que trabajaba desde casa como traductor. Durante nuestras primeras conversaciones casuales en el pasillo, noté algo extraño: él también escuchaba el eco, pero en su caso, provenía de MI departamento.
+
+Las cosas empeoraron rápidamente. Empecé a encontrar notas escritas en mi puerta, mensajes garabateados en los espejos con algún tipo de grasa, incluso grabados en la madera de mi escritorio. Todos decían lo mismo: "Cámbiate. Ahora."
+
+Un día, mientras revisaba unas cajas que aún no había desempacado, encontré algo que me heló la sangre. Una foto de mi boda, pero alterada. En ella, yo estaba sola frente al altar. Martín no estaba. Ni siquiera estaba invitado entre los asistentes. Lo más perturbador era que todos los demás invitados estaban presentes, felices, como si esa versión alternativa de mi boda fuera completamente normal.
+
+Sebas comenzó a comportarse de manera extraña. Me evitaba en los pasillos y cuando lo confronté, solo pudo balbucear: "No deberías estar aquí. Ninguno de nosotros debería." Antes de que pudiera explicar más, entró precipitadamente a su departamento y cerró de golpe.
+
+Decidí buscar información sobre el edificio. Lo que descubrí en los archivos municipales me dejó sin aliento. El edificio había sido testigo de un trágico accidente hace veinte años. Una joven llamada Mariana, idéntica a mí en apariencia según las fotos de los periódicos de la época, había muerto al caer desde el tejado. Su cuerpo nunca fue encontrado.
+
+Pero lo que realmente me paralizó fue el informe policial. Mariana había estado comprometida, pero su novio había cancelado la boda abruptamente. Según los testimonios, ella había perdido la razón, convencida de que podía "volver a empezar" si simplemente eliminaba cualquier evidencia de su pasado.
+
+Esa noche, mientras intentaba procesar toda esta información, ocurrió algo que cambió todo. Escuché claramente cómo alguien abría la puerta principal. Los pasos eran inconfundibles: venían directamente hacia mi habitación. Encendí la luz y vi... a mí misma.
+
+No era un reflejo. No era un truco de la luz. Era yo, pero diferente. Mis ojos eran completamente negros, mi piel tenía un tono grisáceo, y mi cabello flotaba como si estuviera sumergida en agua. Pero lo más aterrador fue su sonrisa: demasiado ancha, mostrando demasiados dientes.
+
+"Finalmente," dijo con mi voz distorsionada, "podemos terminar lo que empezaste."
+
+En ese momento, recordé todo. Los últimos meses antes de mudarme aquí. Las terapias psiquiátricas que había fingido hacer para complacer a Martín. Los medicamentos que tiraba por el inodoro porque estaba segura de que no los necesitaba. Y peor aún, las largas caminatas nocturnas que no podía recordar, los períodos de tiempo perdidos, las voces que nadie más escuchaba.
+
+Ahora entiendo por qué Sebas me miraba con tanta lástima. Por qué la administradora del edificio me había dado este departamento específicamente. Por qué mi reflejo en el espejo del baño ha estado perdiendo color gradualmente.
+
+Estoy escribiendo esto desde el suelo de mi habitación, con la espalda contra la puerta. Puedo escucharla moviéndose por el departamento, buscándome. A veces habla con mi voz, otras veces con la de Mariana. Dice que solo quiere ayudarme a "corregir" las cosas, a eliminar todas las versiones incorrectas de mí misma que han estado causando tanto dolor.
+
+Lo más irónico es que ahora entiendo por qué elegí este departamento. Por qué insistí en mudarme aquí tan rápido. Por qué empecé a actuar de manera errática justo antes de venir. Todo tiene sentido.
+
+Escucho pasos aproximándose. Mi otro yo está cerca. Ya no estoy segura de quién está escribiendo esto. O cuántas versiones de mí misma quedan por eliminar.
+
+[Nota del editor: Este documento fue encontrado en un dispositivo perteneciente a una mujer identificada como María Fernanda López. Según los registros médicos, la paciente había sido diagnosticada con trastorno de identidad disociativo severo. El apartamento donde fue hallada permanece sellado por orden judicial. Los vecinos reportan escuchar conversaciones acaloradas provenientes del interior, aunque el lugar está oficialmente desocupado.]`
     }
 };
 

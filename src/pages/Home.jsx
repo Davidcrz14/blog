@@ -241,7 +241,7 @@ const Home = () => {
                 </div>
                 <p className="text-xl max-w-2xl">
                     Bienvenido a mi rincón digital. Aquí encontrarás mis pensamientos, proyectos y experiencias.
-                    Soy un desarrollador apasionado por crear experiencias únicas y significativas.
+                    Soy un desarrollador apasionado por crear experiencias únicas y significativas. Actualmente trabajo en Scrypto Solutions.
                 </p>
             </section>
 
