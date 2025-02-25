@@ -1,16 +1,29 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import './App.css'
+import BackgroundShapes from './components/BackgroundShapes'
+import MusicPlayer from './components/MusicPlayer'
+import ScrollToTop from './components/ScrollToTop'
 import MainLayout from './layouts/MainLayout'
+import Arcade from './pages/Arcade'
 import Home from './pages/Home'
-import Technology from './pages/Technology'
+import Projects from './pages/Projects'
 import Stories from './pages/Stories'
 import StoryDetail from './pages/StoryDetail'
-import Projects from './pages/Projects'
-import Arcade from './pages/Arcade'
-import ScrollToTop from './components/ScrollToTop'
-import BackgroundShapes from './components/BackgroundShapes'
-import './App.css'
+import Technology from './pages/Technology'
 
 function App() {
+  const [showMusicPlayer, setShowMusicPlayer] = useState(false);
+
+  useEffect(() => {
+    // Mostrar el reproductor de música después de un breve retraso
+    const timer = setTimeout(() => {
+      setShowMusicPlayer(true);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Router>
       <ScrollToTop />
@@ -26,6 +39,7 @@ function App() {
           <Route path="/arcade" element={<Arcade />} />
         </Routes>
       </MainLayout>
+      {showMusicPlayer && <MusicPlayer />}
     </Router>
   )
 }

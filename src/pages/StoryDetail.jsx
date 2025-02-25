@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
-
-
 const stories = {
     "el-regalo-de-cumpleanos": {
         title: "El Regalo de Cumpleaños",
@@ -180,6 +178,9 @@ const StoryDetail = () => {
     const story = stories[slug];
     const [isReading, setIsReading] = useState(false);
     const [progress, setProgress] = useState(0);
+    const [currentFontSize, setCurrentFontSize] = useState(18); // Tamaño de fuente predeterminado
+    const [currentTheme, setCurrentTheme] = useState('light'); // Tema predeterminado
+    const [showSettings, setShowSettings] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -192,6 +193,22 @@ const StoryDetail = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const increaseFontSize = () => {
+        if (currentFontSize < 24) {
+            setCurrentFontSize(currentFontSize + 2);
+        }
+    };
+
+    const decreaseFontSize = () => {
+        if (currentFontSize > 14) {
+            setCurrentFontSize(currentFontSize - 2);
+        }
+    };
+
+    const toggleTheme = () => {
+        setCurrentTheme(currentTheme === 'light' ? 'dark' : 'light');
+    };
 
     if (!story) {
         return (
@@ -208,7 +225,9 @@ const StoryDetail = () => {
     }
 
     return (
-        <div className="relative min-h-screen bg-[#f5e6d3]">
+        <div className={`relative min-h-screen transition-colors duration-300 ${
+            currentTheme === 'dark' ? 'bg-[#2c1810] text-[#f5e6d3]' : 'bg-[#f5e6d3] text-[#2c1810]'
+        }`}>
             <div
                 className="fixed top-0 left-0 h-1 bg-[#8b4513] transition-all duration-300 z-50"
                 style={{ width: `${progress}%` }}
@@ -220,14 +239,66 @@ const StoryDetail = () => {
                 </Link>
             </div>
 
+            <div className={`fixed top-4 right-4 transition-opacity duration-300 ${isReading ? 'opacity-100' : 'opacity-0'}`}>
+                <button
+                    onClick={() => setShowSettings(!showSettings)}
+                    className="retro-button text-sm"
+                    aria-label="Configuración"
+                >
+                    ⚙️
+                </button>
+
+                {showSettings && (
+                    <div className={`absolute right-0 mt-2 p-4 retro-card shadow-lg z-50 ${
+                        currentTheme === 'dark' ? 'bg-[#3c2820] text-[#f5e6d3]' : 'bg-[#f5e6d3] text-[#2c1810]'
+                    }`}>
+                        <div className="space-y-3">
+                            <div className="flex items-center justify-between">
+                                <span>Tamaño de texto</span>
+                                <div className="flex space-x-2">
+                                    <button
+                                        onClick={decreaseFontSize}
+                                        className="retro-button-small"
+                                        aria-label="Disminuir tamaño de texto"
+                                    >
+                                        A-
+                                    </button>
+                                    <button
+                                        onClick={increaseFontSize}
+                                        className="retro-button-small"
+                                        aria-label="Aumentar tamaño de texto"
+                                    >
+                                        A+
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className="flex items-center justify-between">
+                                <span>Tema</span>
+                                <button
+                                    onClick={toggleTheme}
+                                    className="retro-button-small"
+                                    aria-label="Cambiar tema"
+                                >
+                                    {currentTheme === 'light' ? '🌙' : '☀️'}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
 
             <div className="max-w-4xl mx-auto px-4 py-16">
-                <header className="mb-12 text-center space-y-6">
+                <header className={`mb-12 text-center space-y-6 ${
+                    currentTheme === 'dark' ? 'text-[#f5e6d3]' : 'text-[#2c1810]'
+                }`}>
                     <div className="space-y-2">
-                        <span className="inline-block px-4 py-2 retro-border text-sm">
+                        <span className={`inline-block px-4 py-2 retro-border text-sm ${
+                            currentTheme === 'dark' ? 'border-[#f5e6d3]' : 'border-[#2c1810]'
+                        }`}>
                             {story.category}
                         </span>
-                        <h1 className="text-6xl font-bold mt-4 leading-tight">
+                        <h1 className="text-6xl font-bold mt-4 leading-tight animate-fade-in">
                             {story.title}
                         </h1>
                     </div>
@@ -238,12 +309,18 @@ const StoryDetail = () => {
                     </div>
                 </header>
 
-                <article className="retro-card p-8 md:p-12 shadow-xl">
+                <article className={`retro-card p-8 md:p-12 shadow-xl transition-colors duration-300 ${
+                    currentTheme === 'dark' ? 'bg-[#3c2820] text-[#f5e6d3] border-[#f5e6d3]' : 'bg-[#f5e6d3] text-[#2c1810] border-[#2c1810]'
+                }`}>
                     <div className="prose prose-lg max-w-none">
                         {story.content.split('\n\n').map((paragraph, index) => (
                             <p
                                 key={index}
-                                className="mb-6 leading-relaxed text-lg first-letter:text-4xl first-letter:font-bold first-letter:mr-1 first-letter:float-left"
+                                className="mb-6 leading-relaxed first-letter:text-4xl first-letter:font-bold first-letter:mr-1 first-letter:float-left animate-fade-in"
+                                style={{
+                                    fontSize: `${currentFontSize}px`,
+                                    animationDelay: `${index * 0.1}s`
+                                }}
                             >
                                 {paragraph}
                             </p>
@@ -257,7 +334,9 @@ const StoryDetail = () => {
                             ← Volver a Historias
                         </Link>
                     </div>
-                    <div className="text-sm opacity-75">
+                    <div className={`text-sm opacity-75 ${
+                        currentTheme === 'dark' ? 'text-[#f5e6d3]' : 'text-[#2c1810]'
+                    }`}>
                         © 2024 DavC | Bliss - Todos los derechos reservados
                     </div>
                 </footer>

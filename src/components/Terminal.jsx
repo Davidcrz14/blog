@@ -9,6 +9,7 @@ const Terminal = ({ isOpen, onClose }) => {
     ]);
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [glitchEffect, setGlitchEffect] = useState(false);
     const contentRef = useRef(null);
     const chatHistoryRef = useRef([]);
     const terminalRef = useRef(null);
@@ -31,6 +32,17 @@ const Terminal = ({ isOpen, onClose }) => {
         if (contentRef.current) {
             contentRef.current.scrollTop = contentRef.current.scrollHeight;
         }
+
+        // Asegurarse de que los mensajes permanezcan visibles después de la animación
+        const timer = setTimeout(() => {
+            const messageElements = document.querySelectorAll('.terminal-message');
+            messageElements.forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
+        }, 500);
+
+        return () => clearTimeout(timer);
     }, [messages]);
 
     useEffect(() => {
@@ -42,6 +54,15 @@ const Terminal = ({ isOpen, onClose }) => {
 
         if (isOpen) {
             document.addEventListener('mousedown', handleClickOutside);
+
+            // Efecto de glitch al abrir
+            setGlitchEffect(true);
+            setTimeout(() => setGlitchEffect(false), 1000);
+
+            // Si ya hay mensajes previos (más que los iniciales), mostrar mensaje de sesión restaurada
+            if (messages.length > 3 && !messages.some(m => m.content === 'Sesión restaurada.')) {
+                setMessages(prev => [...prev, { role: 'system', content: 'Sesión restaurada.' }]);
+            }
         }
 
         return () => {
@@ -91,11 +112,12 @@ const Terminal = ({ isOpen, onClose }) => {
     };
 
     useEffect(() => {
-        if (isOpen) {
+        if (isOpen && !chatSessionRef.current) {
             initializeChatSession();
         }
         return () => {
-            chatSessionRef.current = null;
+            // No eliminamos la referencia al cerrar para mantener la sesión
+            // chatSessionRef.current = null;
         };
     }, [isOpen]);
 
@@ -125,7 +147,9 @@ const Terminal = ({ isOpen, onClose }) => {
         ];
 
         const message = initiatives[Math.floor(Math.random() * initiatives.length)];
-        setMessages(prev => [...prev, { role: 'assistant', content: message }]);
+        // Crear una copia inmutable de los mensajes actuales
+        const updatedMessages = [...messages, { role: 'assistant', content: message }];
+        setMessages(updatedMessages);
 
         // Si no responde, Elena se enojará
         setTimeout(() => {
@@ -137,6 +161,7 @@ const Terminal = ({ isOpen, onClose }) => {
                     silentSince: Date.now()
                 }));
 
+                // Crear una nueva copia inmutable con el mensaje de enojo
                 setMessages(prev => [...prev, {
                     role: 'assistant',
                     content: "¡Bien! ¡Si no quieres hablarme, yo tampoco te hablaré! (╯°□°)╯︵ ┻━┻"
@@ -146,17 +171,36 @@ const Terminal = ({ isOpen, onClose }) => {
     };
 
     const clearTerminal = () => {
-        setMessages([
-            { role: 'system', content: 'Terminal limpiada.' },
-            { role: 'system', content: '¿En qué puedo ayudarte?' }
-        ]);
-        chatSessionRef.current = null;
-        initializeChatSession();
+        // Efecto de glitch al limpiar
+        setGlitchEffect(true);
+        setTimeout(() => {
+            setMessages([
+                { role: 'system', content: 'Terminal limpiada.' },
+                { role: 'system', content: '¿En qué puedo ayudarte?' }
+            ]);
+            // No reiniciamos la sesión de chat
+            // chatSessionRef.current = null;
+            // initializeChatSession();
+            setGlitchEffect(false);
+
+            // Asegurarse de que los nuevos mensajes sean visibles
+            setTimeout(() => {
+                const messageElements = document.querySelectorAll('.terminal-message');
+                messageElements.forEach(el => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                });
+            }, 100);
+        }, 500);
     };
 
     const handleClose = () => {
-        clearTerminal();
-        onClose();
+        // Efecto de glitch al cerrar
+        setGlitchEffect(true);
+        setTimeout(() => {
+            // No llamamos a clearTerminal() para mantener el historial
+            onClose();
+        }, 500);
     };
 
     const handleSubmit = async (e) => {
@@ -177,7 +221,9 @@ const Terminal = ({ isOpen, onClose }) => {
             return;
         }
 
-        setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+        // Crear una copia inmutable de los mensajes actuales
+        const updatedMessages = [...messages, { role: 'user', content: userMessage }];
+        setMessages(updatedMessages);
         setIsLoading(true);
 
         // Verificar si Elena está en modo silencioso
@@ -211,6 +257,7 @@ const Terminal = ({ isOpen, onClose }) => {
             const text = result.response.text();
 
             const newMessage = { role: 'assistant', content: text };
+            // Crear una nueva copia inmutable con el mensaje de respuesta
             setMessages(prev => [...prev, newMessage]);
 
             // Analizar respuesta para actualizar estado
@@ -228,6 +275,7 @@ const Terminal = ({ isOpen, onClose }) => {
 
         } catch (error) {
             console.error('Error:', error);
+            // Crear una nueva copia inmutable con el mensaje de error
             setMessages(prev => [...prev, {
                 role: 'system',
                 content: 'Error: No se pudo procesar tu solicitud. Por favor, intenta de nuevo.'
@@ -241,7 +289,10 @@ const Terminal = ({ isOpen, onClose }) => {
 
     return (
         <div className="terminal-overlay" onMouseDown={(e) => e.target === e.currentTarget && handleClose()}>
-            <div className="terminal-window" ref={terminalRef}>
+            <div
+                className={`terminal-window ${glitchEffect ? 'glitch-effect' : ''}`}
+                ref={terminalRef}
+            >
                 <div className="terminal-header">
                     <div className="terminal-title">DavC-OS Terminal</div>
                     <div className="terminal-buttons">
@@ -256,15 +307,31 @@ const Terminal = ({ isOpen, onClose }) => {
                 <div className="terminal-content" ref={contentRef}>
                     {messages.map((message, index) => (
                         <div
-                            key={index}
+                            key={`msg-${index}-${Date.now()}-${Math.random()}`}
                             className={`terminal-message ${message.role === 'user' ? 'terminal-user' : 'terminal-ai'}`}
-                            style={{ animationDelay: `${index * 0.1}s` }}
+                            style={{
+                                animationDelay: `${index * 0.1}s`,
+                                opacity: 1,
+                                display: 'block',
+                                marginBottom: '8px',
+                                wordBreak: 'break-word',
+                                position: 'relative',
+                                zIndex: 20
+                            }}
                         >
                             {message.role === 'user' ? '$ ' : '> '}{message.content}
                         </div>
                     ))}
                     {isLoading && (
-                        <div className="terminal-message terminal-ai">
+                        <div
+                            className="terminal-message terminal-ai"
+                            style={{
+                                opacity: 1,
+                                display: 'block',
+                                position: 'relative',
+                                zIndex: 20
+                            }}
+                        >
                             {'>'} Procesando<span className="cursor-blink">_</span>
                         </div>
                     )}
@@ -279,6 +346,7 @@ const Terminal = ({ isOpen, onClose }) => {
                         className="terminal-input"
                         placeholder="Escribe un comando o 'clear' para limpiar..."
                         disabled={isLoading}
+                        autoFocus
                     />
                 </form>
             </div>
