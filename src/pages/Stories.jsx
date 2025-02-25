@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const StoryCard = ({ title, excerpt, category, readTime, slug }) => (
@@ -30,34 +30,6 @@ const QuoteCard = ({ quote, author }) => (
         <p className="mt-2 text-right font-bold">- {author}</p>
     </div>
 );
-
-const ScrollToTop = () => {
-    const [isVisible, setIsVisible] = useState(false);
-
-    useEffect(() => {
-        const toggleVisibility = () => {
-            if (window.pageYOffset > 300) {
-                setIsVisible(true);
-            } else {
-                setIsVisible(false);
-            }
-        };
-
-        window.addEventListener('scroll', toggleVisibility);
-        return () => window.removeEventListener('scroll', toggleVisibility);
-    }, []);
-
-    return isVisible ? (
-        <div className="fixed bottom-4 right-4 animate-bounce">
-            <button
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="retro-button-scroll"
-            >
-                ↑
-            </button>
-        </div>
-    ) : null;
-};
 
 const Stories = () => {
     const [selectedCategory, setSelectedCategory] = useState('Todas');
@@ -147,8 +119,6 @@ const Stories = () => {
                     ))}
                 </div>
             </section>
-
-            <ScrollToTop />
         </div>
     );
 };

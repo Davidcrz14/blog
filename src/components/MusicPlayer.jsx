@@ -6,6 +6,7 @@ const MusicPlayer = () => {
     const [duration, setDuration] = useState(0);
     const [currentTime, setCurrentTime] = useState(0);
     const [isExpanded, setIsExpanded] = useState(false);
+    const [isLooping, setIsLooping] = useState(false);
 
     const audioRef = useRef(null);
     const progressBarRef = useRef(null);
@@ -24,15 +25,23 @@ const MusicPlayer = () => {
         // Eventos del audio
         audio.addEventListener('loadeddata', setAudioData);
         audio.addEventListener('timeupdate', setAudioTime);
-        audio.addEventListener('ended', () => setIsPlaying(false));
+        audio.addEventListener('ended', () => {
+            if (!isLooping) {
+                setIsPlaying(false);
+            }
+        });
 
         // Limpiar eventos
         return () => {
             audio.removeEventListener('loadeddata', setAudioData);
             audio.removeEventListener('timeupdate', setAudioTime);
-            audio.removeEventListener('ended', () => setIsPlaying(false));
+            audio.removeEventListener('ended', () => {
+                if (!isLooping) {
+                    setIsPlaying(false);
+                }
+            });
         };
-    }, []);
+    }, [isLooping]);
 
     // Controlar reproducción
     const togglePlay = () => {
@@ -42,6 +51,12 @@ const MusicPlayer = () => {
             audioRef.current.play();
         }
         setIsPlaying(!isPlaying);
+    };
+
+    // Controlar bucle
+    const toggleLoop = () => {
+        audioRef.current.loop = !isLooping;
+        setIsLooping(!isLooping);
     };
 
     // Controlar volumen
@@ -68,7 +83,7 @@ const MusicPlayer = () => {
     };
 
     return (
-        <div className={`retro-music-player fixed ${isExpanded ? 'bottom-8 right-8 z-50 w-80' : 'bottom-4 right-4 z-50 w-16 h-16'} transition-all duration-300`}>
+        <div className={`retro-music-player fixed ${isExpanded ? 'bottom-24 left-8 z-50 w-80' : 'bottom-24 left-8 z-50 w-16 h-16'} transition-all duration-300`}>
             <audio ref={audioRef} src="/melodia.mp3" preload="metadata"></audio>
 
             {isExpanded ? (
@@ -108,6 +123,15 @@ const MusicPlayer = () => {
                                 aria-label={isPlaying ? 'Pausar' : 'Reproducir'}
                             >
                                 {isPlaying ? '❚❚' : '▶'}
+                            </button>
+
+                            <button
+                                onClick={toggleLoop}
+                                className={`retro-button-small mr-2 ${isLooping ? 'bg-[#8b4513] text-white' : ''}`}
+                                aria-label={isLooping ? 'Desactivar bucle' : 'Activar bucle'}
+                                title={isLooping ? 'Desactivar bucle' : 'Activar bucle'}
+                            >
+                                🔄
                             </button>
 
                             <div className="flex items-center">

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import MusicPlayer from '../components/MusicPlayer';
 
 const stories = {
     "el-regalo-de-cumpleanos": {
@@ -181,6 +182,7 @@ const StoryDetail = () => {
     const [currentFontSize, setCurrentFontSize] = useState(18); // Tamaño de fuente predeterminado
     const [currentTheme, setCurrentTheme] = useState('light'); // Tema predeterminado
     const [showSettings, setShowSettings] = useState(false);
+    const [showMusicPlayer, setShowMusicPlayer] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -192,6 +194,15 @@ const StoryDetail = () => {
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    useEffect(() => {
+        // Mostrar el reproductor de música después de un breve retraso
+        const timer = setTimeout(() => {
+            setShowMusicPlayer(true);
+        }, 1000);
+
+        return () => clearTimeout(timer);
     }, []);
 
     const increaseFontSize = () => {
@@ -341,6 +352,9 @@ const StoryDetail = () => {
                     </div>
                 </footer>
             </div>
+
+            {/* Añadir el reproductor de música */}
+            {showMusicPlayer && <MusicPlayer />}
         </div>
     );
 };

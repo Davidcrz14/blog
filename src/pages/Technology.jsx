@@ -38,37 +38,6 @@ const NewsCard = ({ title, url, source, publishedAt, description, image }) => {
     );
 };
 
-const ScrollToTop = () => {
-    const [isVisible, setIsVisible] = useState(false);
-
-    useEffect(() => {
-        const toggleVisibility = () => {
-            if (window.pageYOffset > 300) {
-                setIsVisible(true);
-            } else {
-                setIsVisible(false);
-            }
-        };
-
-        window.addEventListener('scroll', toggleVisibility);
-
-        return () => {
-            window.removeEventListener('scroll', toggleVisibility);
-        };
-    }, []);
-
-    return isVisible ? (
-        <div className="fixed bottom-4 right-4 animate-bounce">
-            <button
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="retro-button"
-            >
-                ↑ Subir
-            </button>
-        </div>
-    ) : null;
-};
-
 const Technology = () => {
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -177,10 +146,6 @@ const Technology = () => {
                     </div>
                 )}
             </section>
-
-
-
-            <ScrollToTop />
         </div>
     );
 };

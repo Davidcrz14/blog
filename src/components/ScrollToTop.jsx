@@ -40,7 +40,7 @@ const ScrollToTop = () => {
             {isVisible && (
                 <button
                     onClick={scrollToTop}
-                    className="fixed bottom-8 right-8 z-50 retro-button-scroll animate-bounce-slow"
+                    className="fixed bottom-24 right-8 z-50 retro-button-scroll animate-bounce-slow"
                     aria-label="Volver arriba"
                 >
                     <span className="text-xl">↑</span>
