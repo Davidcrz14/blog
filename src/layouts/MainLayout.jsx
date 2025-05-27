@@ -151,9 +151,7 @@ const MainLayout = ({ children }) => {
                                     <span className="mr-2">⌥</span> Redes
                                 </h3>
                                 <div className="space-y-2 md:space-y-3">
-                                    <a href="https://x.com/programacionori" className="retro-footer-link">
-                                        <span className="font-mono">&gt;</span> Twitter
-                                    </a>
+
                                     <a href="https://github.com/Davidcrz14" className="retro-footer-link">
                                         <span className="font-mono">&gt;</span> GitHub
                                     </a>
