@@ -174,10 +174,10 @@ const Terminal = ({ isOpen, onClose }) => {
         // Efecto de glitch al limpiar
         setGlitchEffect(true);
         setTimeout(() => {
-            setMessages([
-                { role: 'system', content: 'Terminal limpiada.' },
-                { role: 'system', content: '¿En qué puedo ayudarte?' }
-            ]);
+        setMessages([
+            { role: 'system', content: 'Terminal limpiada.' },
+            { role: 'system', content: '¿En qué puedo ayudarte?' }
+        ]);
             // No reiniciamos la sesión de chat
             // chatSessionRef.current = null;
             // initializeChatSession();
@@ -199,7 +199,7 @@ const Terminal = ({ isOpen, onClose }) => {
         setGlitchEffect(true);
         setTimeout(() => {
             // No llamamos a clearTerminal() para mantener el historial
-            onClose();
+        onClose();
         }, 500);
     };
 

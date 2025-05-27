@@ -1,14 +1,14 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Terminal from '../components/Terminal';
 
 const NavLink = ({ to, children }) => {
     const location = useLocation();
     const isActive = location.pathname === to;
-    
+
     return (
-        <Link 
-            to={to} 
+        <Link
+            to={to}
             className={`relative px-3 py-2 transition-colors hover:text-[#8b4513] ${
                 isActive ? 'text-[#8b4513] font-bold after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-[#8b4513]' : ''
             }`}
@@ -56,13 +56,14 @@ const MainLayout = ({ children }) => {
                     <div className="flex items-center justify-between h-16">
                         <div className="flex items-center space-x-4 md:space-x-12">
                             <Link to="/" className="text-2xl md:text-3xl font-bold hover:text-[#8b4513] transition-colors group">
-                                DavC | Bliss_<span className="cursor-blink group-hover:text-[#8b4513]">|</span>
+                                DavC | Dael<span className="cursor-blink group-hover:text-[#8b4513]">|</span>
                             </Link>
                             <div className="hidden md:flex space-x-8">
                                 <NavLink to="/tecnologia">Tecnología</NavLink>
                                 <NavLink to="/historias">Historias</NavLink>
                                 <NavLink to="/proyectos">Proyectos Web</NavLink>
                                 <NavLink to="/arcade">Arcade</NavLink>
+                                <NavLink to="/dibujos">Dibujos</NavLink>
                             </div>
                         </div>
                         <div className="flex items-center space-x-4">
@@ -96,6 +97,9 @@ const MainLayout = ({ children }) => {
                         </Link>
                         <Link to="/arcade" className="block py-2 hover:text-[#8b4513] transition-colors">
                             Arcade
+                        </Link>
+                        <Link to="/dibujos" className="block py-2 hover:text-[#8b4513] transition-colors">
+                            Dibujos
                         </Link>
                         <button
                             className="retro-button-nav w-full text-left mt-2"
@@ -135,6 +139,9 @@ const MainLayout = ({ children }) => {
                                     <Link to="/arcade" className="retro-footer-link">
                                         <span className="font-mono">&gt;</span> Arcade
                                     </Link>
+                                    <Link to="/dibujos" className="retro-footer-link">
+                                        <span className="font-mono">&gt;</span> Dibujos
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +166,7 @@ const MainLayout = ({ children }) => {
                     </div>
                     <div className="mt-8 md:mt-12 text-center pt-6 retro-footer-bottom">
                         <p className="text-base md:text-lg pixel-corners">
-                            2024 DavC | Bliss - Hecho con ♥
+                            2024 DavC | Dael - Hecho con ♥
                         </p>
                     </div>
                 </div>

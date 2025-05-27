@@ -348,7 +348,7 @@ const StoryDetail = () => {
                     <div className={`text-sm opacity-75 ${
                         currentTheme === 'dark' ? 'text-[#f5e6d3]' : 'text-[#2c1810]'
                     }`}>
-                        © 2024 DavC | Bliss - Todos los derechos reservados
+                        © 2024 DavC | Dael - Todos los derechos reservados
                     </div>
                 </footer>
             </div>

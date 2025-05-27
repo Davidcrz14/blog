@@ -4,6 +4,7 @@ import BackgroundShapes from './components/BackgroundShapes'
 import ScrollToTop from './components/ScrollToTop'
 import MainLayout from './layouts/MainLayout'
 import Arcade from './pages/Arcade'
+import Drawings from './pages/Drawings'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
 import Stories from './pages/Stories'
@@ -24,6 +25,7 @@ function App() {
           <Route path="/sobre-mi" element={<Home />} />
           <Route path="/proyectos" element={<Projects />} />
           <Route path="/arcade" element={<Arcade />} />
+          <Route path="/dibujos" element={<Drawings />} />
         </Routes>
       </MainLayout>
     </Router>

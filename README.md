@@ -1,8 +1,8 @@
-# ✨ Bliss - Blog Personal
+# ✨ Dael - Blog Personal
 
 <div align="center">
 
-![Bliss Blog Banner](/path/to/banner.png)
+![Dael Blog Banner](/path/to/banner.png)
 
 [![Made with React](https://img.shields.io/badge/Made_with-React-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
 [![Powered by Vite](https://img.shields.io/badge/Powered_by-Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
@@ -11,12 +11,9 @@
 
 _Un viaje nostálgico por el mundo digital a través de un blog personal con diseño retro_ 🚀
 
-[Ver Demo](https://davcblog.vercel.app/) 
+[Ver Demo](https://davcblog.vercel.app/)
 
 </div>
-
-
-
 
 ## ⭐ Características Principales
 
@@ -25,6 +22,7 @@ _Un viaje nostálgico por el mundo digital a través de un blog personal con dis
 <td>
 
 ### 🏠 Home
+
 - Animaciones de texto fluidas
 - Reproductor de música integrado
 - Diseño inmersivo retro
@@ -33,6 +31,7 @@ _Un viaje nostálgico por el mundo digital a través de un blog personal con dis
 <td>
 
 ### 📚 Historias
+
 - Diseño adaptativo para lectura
 - Efectos visuales nostálgicos
 - Navegación intuitiva
@@ -43,6 +42,7 @@ _Un viaje nostálgico por el mundo digital a través de un blog personal con dis
 <td>
 
 ### 💻 Tecnología
+
 - Noticias actualizadas
 - Interfaz minimalista
 - Categorización inteligente
@@ -51,6 +51,7 @@ _Un viaje nostálgico por el mundo digital a través de un blog personal con dis
 <td>
 
 ### 🤖 Terminal AI
+
 - Chat interactivo con IA
 - Comandos personalizados
 - Respuestas en tiempo real
@@ -63,27 +64,30 @@ _Un viaje nostálgico por el mundo digital a través de un blog personal con dis
 
 <div align="center">
 
-| Frontend | Estilo | Herramientas | IA |
-|:--------:|:------:|:------------:|:--:|
-| React 18 | Tailwind CSS | Vite | Google Generative AI |
-| React Router DOM | PostCSS | ESLint | - |
+|     Frontend     |    Estilo    | Herramientas |          IA          |
+| :--------------: | :----------: | :----------: | :------------------: |
+|     React 18     | Tailwind CSS |     Vite     | Google Generative AI |
+| React Router DOM |   PostCSS    |    ESLint    |          -           |
 
 </div>
 
 ## 🚀 Guía de Inicio Rápido
 
 1. **Clona el Repositorio**
+
    ```bash
    git clone https://github.com/Davidcrz14/blog
    cd blog
    ```
 
 2. **Instala Dependencias**
+
    ```bash
    npm install
    ```
 
 3. **Configura las Variables de Entorno**
+
    ```bash
    cp .env.example .env
    # Edita .env y añade tu API key de Google
@@ -99,12 +103,12 @@ _Un viaje nostálgico por el mundo digital a través de un blog personal con dis
 ```tree
 src/
 ├── components/            # Componentes modulares
-│  
-│   
-│  
+│
+│
+│
 ├── pages/                # Páginas de la aplicación
 ├── assets/               # Recursos estáticos
-│  
+│
 
 ```
 
@@ -112,17 +116,14 @@ src/
 
 <div align="center">
 
-| Característica | Descripción |
-|---------------|-------------|
-| 🌟 Formas Geométricas | Elementos decorativos interactivos que responden al movimiento |
-| 🎵 Reproductor Musical | Integración perfecta con la experiencia de usuario |
-| 📱 Diseño Responsivo | Adaptación fluida a cualquier dispositivo |
-| 🎮 Terminal Retro | Experiencia nostálgica con tecnología moderna |
+| Característica         | Descripción                                                    |
+| ---------------------- | -------------------------------------------------------------- |
+| 🌟 Formas Geométricas  | Elementos decorativos interactivos que responden al movimiento |
+| 🎵 Reproductor Musical | Integración perfecta con la experiencia de usuario             |
+| 📱 Diseño Responsivo   | Adaptación fluida a cualquier dispositivo                      |
+| 🎮 Terminal Retro      | Experiencia nostálgica con tecnología moderna                  |
 
 </div>
-
-
-
 
 Link del Proyecto: [https://github.com/Davidcrz14/blog](https://github.com/Davidcrz14/blog)
 
