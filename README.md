@@ -1,8 +1,8 @@
-# ✨ Dael - Blog Personal
+# ✨ Daizen - Blog Personal
 
 <div align="center">
 
-![Dael Blog Banner](/path/to/banner.png)
+![Daizen Blog Banner](/path/to/banner.png)
 
 [![Made with React](https://img.shields.io/badge/Made_with-React-61DAFB?style=for-the-badge&logo=react&logoColor=white)](https://reactjs.org/)
 [![Powered by Vite](https://img.shields.io/badge/Powered_by-Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)

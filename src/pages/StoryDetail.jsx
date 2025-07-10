@@ -236,9 +236,8 @@ const StoryDetail = () => {
     }
 
     return (
-        <div className={`relative min-h-screen transition-colors duration-300 ${
-            currentTheme === 'dark' ? 'bg-[#2c1810] text-[#f5e6d3]' : 'bg-[#f5e6d3] text-[#2c1810]'
-        }`}>
+        <div className={`relative min-h-screen transition-colors duration-300 ${currentTheme === 'dark' ? 'bg-[#2c1810] text-[#f5e6d3]' : 'bg-[#f5e6d3] text-[#2c1810]'
+            }`}>
             <div
                 className="fixed top-0 left-0 h-1 bg-[#8b4513] transition-all duration-300 z-50"
                 style={{ width: `${progress}%` }}
@@ -260,9 +259,8 @@ const StoryDetail = () => {
                 </button>
 
                 {showSettings && (
-                    <div className={`absolute right-0 mt-2 p-4 retro-card shadow-lg z-50 ${
-                        currentTheme === 'dark' ? 'bg-[#3c2820] text-[#f5e6d3]' : 'bg-[#f5e6d3] text-[#2c1810]'
-                    }`}>
+                    <div className={`absolute right-0 mt-2 p-4 retro-card shadow-lg z-50 ${currentTheme === 'dark' ? 'bg-[#3c2820] text-[#f5e6d3]' : 'bg-[#f5e6d3] text-[#2c1810]'
+                        }`}>
                         <div className="space-y-3">
                             <div className="flex items-center justify-between">
                                 <span>Tamaño de texto</span>
@@ -300,13 +298,11 @@ const StoryDetail = () => {
             </div>
 
             <div className="max-w-4xl mx-auto px-4 py-16">
-                <header className={`mb-12 text-center space-y-6 ${
-                    currentTheme === 'dark' ? 'text-[#f5e6d3]' : 'text-[#2c1810]'
-                }`}>
+                <header className={`mb-12 text-center space-y-6 ${currentTheme === 'dark' ? 'text-[#f5e6d3]' : 'text-[#2c1810]'
+                    }`}>
                     <div className="space-y-2">
-                        <span className={`inline-block px-4 py-2 retro-border text-sm ${
-                            currentTheme === 'dark' ? 'border-[#f5e6d3]' : 'border-[#2c1810]'
-                        }`}>
+                        <span className={`inline-block px-4 py-2 retro-border text-sm ${currentTheme === 'dark' ? 'border-[#f5e6d3]' : 'border-[#2c1810]'
+                            }`}>
                             {story.category}
                         </span>
                         <h1 className="text-6xl font-bold mt-4 leading-tight animate-fade-in">
@@ -320,9 +316,8 @@ const StoryDetail = () => {
                     </div>
                 </header>
 
-                <article className={`retro-card p-8 md:p-12 shadow-xl transition-colors duration-300 ${
-                    currentTheme === 'dark' ? 'bg-[#3c2820] text-[#f5e6d3] border-[#f5e6d3]' : 'bg-[#f5e6d3] text-[#2c1810] border-[#2c1810]'
-                }`}>
+                <article className={`retro-card p-8 md:p-12 shadow-xl transition-colors duration-300 ${currentTheme === 'dark' ? 'bg-[#3c2820] text-[#f5e6d3] border-[#f5e6d3]' : 'bg-[#f5e6d3] text-[#2c1810] border-[#2c1810]'
+                    }`}>
                     <div className="prose prose-lg max-w-none">
                         {story.content.split('\n\n').map((paragraph, index) => (
                             <p
@@ -345,10 +340,9 @@ const StoryDetail = () => {
                             ← Volver a Historias
                         </Link>
                     </div>
-                    <div className={`text-sm opacity-75 ${
-                        currentTheme === 'dark' ? 'text-[#f5e6d3]' : 'text-[#2c1810]'
-                    }`}>
-                        © 2024 DavC | Dael - Todos los derechos reservados
+                    <div className={`text-sm opacity-75 ${currentTheme === 'dark' ? 'text-[#f5e6d3]' : 'text-[#2c1810]'
+                        }`}>
+                        © 2025 DavC | Daizen - Todos los derechos reservados
                     </div>
                 </footer>
             </div>

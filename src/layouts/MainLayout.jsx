@@ -56,7 +56,7 @@ const MainLayout = ({ children }) => {
                     <div className="flex items-center justify-between h-16">
                         <div className="flex items-center space-x-4 md:space-x-12">
                             <Link to="/" className="text-2xl md:text-3xl font-bold hover:text-[#8b4513] transition-colors group">
-                                DavC | Dael<span className="cursor-blink group-hover:text-[#8b4513]">|</span>
+                                DavC | Daizen<span className="cursor-blink group-hover:text-[#8b4513]">|</span>
                             </Link>
                             <div className="hidden md:flex space-x-8">
                                 <NavLink to="/tecnologia">Tecnología</NavLink>
@@ -164,7 +164,7 @@ const MainLayout = ({ children }) => {
                     </div>
                     <div className="mt-8 md:mt-12 text-center pt-6 retro-footer-bottom">
                         <p className="text-base md:text-lg pixel-corners">
-                            2024 DavC | Dael - Hecho con ♥
+                            2025 DavC | Daizen - Hecho con ♥
                         </p>
                     </div>
                 </div>
